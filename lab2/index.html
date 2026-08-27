@@ -6,19 +6,75 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Lab 2</title>
-    
+    <title>Lab 2 - Multivariate Visualization</title>
+
     <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="lab2.css">
 
 </head>
 
 <body>
 
-    <h1>Lab 2</h1>
-    <p>Lab 2 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <header>
+        <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
 
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
+
+    <main>
+        <h2>Lab 2: Multivariate Visualization with D3</h2>
+
+    <p>
+        This visualization compares city population, average temperature, development level, and region.
+    </p>
+
+    <p class="chart-note">
+        Bar length shows population. Circle position shows temperature,
+        circle size shows development level, and bar color shows region.
+    </p>
+
+    <div id="chart"></div>
+    <div id="tooltip" class="tooltip"></div>
+
+    <section class="design-justification">
+        <h2>Design Justification</h2>
+        <p>
+            This visualization uses several visual channels to represent the 
+            four required variables. Population is shown by the length of each 
+            horizontal bar, making it easy to compare city sizes. Average temperature 
+            is represented by the horizontal position of the white circle, using the 
+            temperature scale at the top of the chart. Development level is shown by circle 
+            size, with larger circles representing higher development levels. Region is 
+            represented by bar color so that cities from the same region can be identified quickly.
+        </p>
+        <p> 
+            The cities are also ordered by development level from High to Medium to Low. Within each 
+            development level, cities are sorted from cooler to warmer temperatures. This creates more 
+            meaningful groups and makes patterns easier to notice. For example, with this sorting method, 
+            it is very easy to notice that cities with colder average tempearture tend to have higher 
+            development levels, and more developed cities tend to have a larger population. Overall, the 
+            visualization allows viewers to compare population, temperature, development level, and region 
+            while also seeing how these characteristics vary across cities.
+        </p>
+    </section>
+
+    <a href="../index.html">Back to Home</a>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab2.js"></script>
 
 </body>
-
 </html>

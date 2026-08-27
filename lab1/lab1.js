@@ -26,6 +26,14 @@ async function loadData() {
         .attr("width", width)
         .attr("height", height);
 
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", 30)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "20px")
+        .attr("font-weight", "bold")
+        .text("Student Scores");
+
     const chart = svg.append("g")
         .attr(
             "transform",

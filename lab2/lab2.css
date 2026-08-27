@@ -1,0 +1,44 @@
+#chart {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+#chart svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #aaa;
+    padding: 8px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.axis-label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.legend-title {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.chart-note {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.design-justification {
+    max-width: 850px;
+    margin-top: 30px;
+}
