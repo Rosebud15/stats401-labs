@@ -1,0 +1,38 @@
+.lab3-page section {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.lab3-page .table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.lab3-page table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lab3-page th,
+.lab3-page td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.lab3-page th {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.lab3-page th:hover {
+    background-color: #dddddd;
+}
+
+.lab3-page tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.lab3-page tbody tr:hover {
+    background-color: #eeeeee;
+}
