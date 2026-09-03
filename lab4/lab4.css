@@ -1,0 +1,125 @@
+.page {
+    width: 100%;
+    margin: 0;
+}
+
+.page header {
+    margin-bottom: 28px;
+}
+
+.subtitle {
+    margin: 0;
+    color: #626a73;
+    font-size: 1.05rem;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dfe2e6;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.chart-note {
+    max-width: 780px;
+    margin: 0 0 18px;
+    color: #626a73;
+    line-height: 1.5;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 10px 0 16px;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.93rem;
+}
+
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.chart-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.chart-container svg {
+    display: block;
+    width: 100%;
+    min-width: 720px;
+    height: auto;
+}
+
+.axis text {
+    fill: #40464d;
+    font-size: 13px;
+}
+
+.y-axis text {
+    font-weight: 600;
+}
+
+.grid line {
+    stroke: #e7e9ec;
+}
+
+.grid .domain {
+    display: none;
+}
+
+.axis-label {
+    font-size: 13px;
+    fill: #4f565e;
+}
+
+.analysis-card p {
+    margin: 0;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(30, 33, 37, 0.96);
+    color: white;
+    border-radius: 6px;
+    padding: 9px 11px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+.error-message {
+    background: #fff2f2;
+    border: 1px solid #dfb0b0;
+    padding: 14px 16px;
+    border-radius: 8px;
+    color: #7d2929;
+}
+
+@media (max-width: 700px) {
+    .page {
+        padding-top: 12px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}

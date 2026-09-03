@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Lab 4</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: Cleaning Web Data for Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="lab4.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-
 <body>
+    <header>
+            <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
 
-    <h1>Lab 4</h1>
-    <p>Lab 4 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
 
+    <main class="page">
+        <h2>Lab 4: Cleaning Web Data for Visualization</h2>
+        <p class="subtitle">RoBERTa sentiment across major U.S. airlines</p>
 
+        <section class="card" aria-labelledby="chart-title">
+            <h2 id="chart-title">Tweet Sentiment by Airline</h2>
+            <p class="chart-note">
+                Each bar shows the proportion of tweets classified as negative, neutral, or positive by the RoBERTa model.
+                Airlines are ordered from highest to lowest average sentiment score.
+            </p>
+            <div id="legend" class="legend" aria-label="Sentiment legend"></div>
+            <div id="chart" class="chart-container"></div>
+            <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="card analysis-card" aria-labelledby="analysis-title">
+            <h2 id="analysis-title">Analysis</h2>
+            <p>
+                I used the Twitter US Airline Sentiment dataset
+                (<a href="https://openbigdata.org/resource/twitter-us-airline-sentiment/">source</a>),
+                which contains tweets about six major U.S. airlines collected in February 2015.
+                Although the source dataset includes human sentiment labels, I did not use those labels
+                to create this chart; instead, I recalculated sentiment from tweet text with the
+                <code>cardiffnlp/twitter-roberta-base-sentiment-latest</code> model. During cleaning, I
+                removed rows without usable tweet text or airline information, removed duplicate tweet IDs,
+                normalized whitespace, converted retweet counts to numeric values, and parsed tweet timestamps.
+                RoBERTa produced negative, neutral, and positive probabilities for each tweet, and
+                <code>sentiment_score</code> was calculated as P(positive) minus P(negative). The visualization
+                shows the proportion of model-predicted sentiment classes for each airline and orders airlines
+                by average sentiment score. Across the processed tweets,
+                <span id="dominant-sentiment"></span> is the most common predicted sentiment.
+                <span id="highest-airline"></span> has the highest average sentiment score, while
+                <span id="lowest-airline"></span> has the lowest. These model outputs are estimates rather
+                than ground-truth labels.
+            </p>
+        </section>
+
+        <p id="error-message" class="error-message" hidden></p>
+    </main>
+
+    <a href="../index.html">Back to Home</a>
+
+    <script src="lab4.js"></script>
 </body>
-
 </html>
