@@ -1,0 +1,138 @@
+/* Visualization containers */
+#chart,
+#matrix {
+    overflow-x: auto;
+}
+
+#chart svg,
+#matrix svg {
+    display: block;
+}
+
+/* Network visualization */
+.network-label {
+    font-size: 10px;
+    fill: #334e68;
+    paint-order: stroke;
+    stroke: white;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.node-path {
+    stroke: white;
+    stroke-width: 1.5px;
+    cursor: grab;
+}
+
+.node-path:active {
+    cursor: grabbing;
+}
+
+.link-line {
+    cursor: pointer;
+}
+
+/* Adjacency matrix */
+.matrix-label {
+    font-size: 9px;
+}
+
+.matrix-cell {
+    shape-rendering: crispEdges;
+    cursor: crosshair;
+}
+
+.matrix-guide {
+    pointer-events: none;
+}
+
+/* Tooltip */
+#tooltip,
+.tooltip {
+    position: absolute;
+    z-index: 20;
+    max-width: 280px;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid #9aa7b3;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    padding: 9px 11px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+/* Legends */
+.legend-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    align-items: center;
+    padding: 12px 16px;
+    margin: 12px 0 18px;
+    background: #f7f9fb;
+    border: 1px solid #d9e2ec;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.legend-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.legend-title {
+    font-weight: 600;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* IMPORTANT: prevents SVG legend icons from becoming 300x150 */
+.legend-symbol {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.legend-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+}
+
+.legend-line {
+    display: inline-block;
+    width: 28px;
+    height: 0;
+    border-top-style: solid;
+}
+
+/* Network questions and findings */
+.finding {
+    margin: 24px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d9e2ec;
+}
+
+.finding:last-child {
+    border-bottom: none;
+}
+
+.finding h3 {
+    margin-bottom: 10px;
+}
+
+.finding p {
+    margin: 6px 0;
+    line-height: 1.6;
+}

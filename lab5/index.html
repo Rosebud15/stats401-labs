@@ -6,17 +6,234 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Lab 5</title>
+    <title>Lab 5: Interactive Network Visualization</title>
     
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="lab5.css">
 
 </head>
 
 <body>
 
-    <h1>Lab 5</h1>
-    <p>Lab 5 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <header>
+            <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
+
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
+
+    <main>
+        <h2>Lab 5: Interactive Urban Transit Network</h2>
+        <p class="intro">
+            This page represents the same synthetic 50-station transit network in two ways:
+            an interactive force-directed node-link diagram and an adjacency matrix.
+        </p>
+
+        <section>
+            <h2>1. Dataset Description</h2>
+            <p>
+                The network contains 50 stations and 50 undirected direct connections. Station attributes are
+                <i>district</i>, <i>daily passengers</i>, and <i>station type</i>.
+                Route attributes are <i>travel time</i> and <i>route type</i>.
+            </p>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div>
+                    <h2>2. Node-Link Visualization</h2>
+                    <p>Drag stations to reposition them. Hover a station or route to isolate its local structure.</p>
+                </div>
+                <button id="reset-network" type="button">Reset layout</button>
+            </div>
+
+            <div id="network-legend" class="legend-panel" aria-label="Node-link visualization legend"></div>
+            <div id="chart" class="viz-container"></div>
+
+            <h3>Node-Link Design Description</h3>
+            <p class="design-text">
+                District is mapped to node color because district is categorical, 
+                making it easy to identify stations from the same geographic area. 
+                Daily passenger volume is mapped to node size so heavily used stations 
+                stand out immediately, while station type is encoded with shape so local, 
+                transfer, and terminal stations remain distinguishable without introducing 
+                additional colors. Route type is represented with line texture—solid, dashed, 
+                or dotted—rather than color, which avoids confusion with the district color 
+                encoding. Travel time is mapped to link width, with thicker links representing 
+                longer direct travel times. Interaction further supports exploration: dragging 
+                helps separate overlapping nodes, hover highlighting isolates a station's 
+                neighbors and incident routes, and tooltips provide exact station and route 
+                attributes without permanently crowding the visualization.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Adjacency Matrix</h2>
+            <p>Hover a cell to inspect a station pair. Connected cells are colored by route type and darken with travel time.</p>
+            <div id="matrix-legend" class="legend-panel" aria-label="Adjacency matrix legend"></div>
+            <div id="matrix" class="viz-container matrix-container"></div>
+
+            <h3>Matrix Design Description</h3>
+            <p class="design-text">
+                The adjacency matrix represents stations as rows and columns, with 
+                a filled cell indicating a direct connection between two stations. 
+                Travel time is encoded with cell opacity, so longer travel times 
+                appear more strongly, while route type is represented using cell 
+                texture or pattern, such as solid fill, diagonal stripes, or dots. 
+                This keeps the route-type encoding consistent with the line textures 
+                used in the node-link view while avoiding competition with district 
+                colors. Station labels and small row/column glyphs preserve important 
+                node information: color represents district, shape represents station 
+                type, and glyph size represents daily passenger volume. Rows and columns 
+                are ordered by district, then station type, and then passenger volume, 
+                which groups similar stations together and makes district-level blocks, 
+                station roles, and repeated connection patterns easier to identify. This 
+                preserves much of the node context from the node-link visualization while 
+                making dense connection patterns easier to compare systematically.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Network Questions and Findings</h2>
+
+            <div class="finding">
+                <h3>1. Which stations appear central in the network?</h3>
+                <p>Answerability: Partially</p>
+                <p>Most useful visualization: Node-Link</p>
+                <p>
+                    Connections are represented by links between stations. 
+                    Stations with several visible links, especially those joining 
+                    different portions of the network, appear more central. Hover 
+                    highlighting also makes a station's immediate neighbors easier 
+                    to identify. <br>
+                    However, there is no single dominant hub. The highest visible 
+                    degree is only about three connections. Stations 4, 7, 10, 13, 
+                    16, 18, 21, 23, 25, 29, 31, 33, 34, and 38 have relatively high 
+                    connectivity. In the node-link layout, stations such as 7, 18, 31, 
+                    and 34 appear particularly important because they connect multiple 
+                    nearby segments. By contrast, stations such as 42 and 49 are visibly 
+                    isolated, so they are clearly not central.
+                </p>
+            </div>
+
+            <div class="finding">
+                <h3>2. Which districts are strongly connected to one another?</h3>
+                <p>Answerability: Well</p>
+                <p>Most useful visualization: Adjacency matrix</p>
+                <p>
+                    Stations are ordered by district → station type → passenger volume, 
+                    and station labels are colored by district. This creates clear 
+                    district blocks in the matrix. A greater concentration of filled 
+                    cells between two district blocks indicates stronger inter-district 
+                    connectivity. <br>
+                    The strongest connection is between the South and East districts, 
+                    with about 11 direct connections. Central-North and East-West are 
+                    also strongly connected, with about 9 connections each. Central-West and 
+                    North-South also show substantial connectivity, with about 8 connections 
+                    each. Some district pairs have very few or no direct links, so the network 
+                    is not uniformly connected across districts.
+                </p>
+            </div>
+
+            <div class="finding">
+                <h3>3. Where are transfer or terminal stations located in the topology?</h3>
+                <p>Answerability: Well</p>
+                <p>Most useful visualization: Both, but the node-link visualization is 
+                    more useful for understanding their topological positions.</p>
+                <p>
+                    Station type is encoded by shape: circles are local stations, 
+                    squares are transfer stations, and triangles are terminal stations. 
+                    The node-link graph shows where those shapes fall within the network, 
+                    while the matrix groups them systematically within each district. <br>
+                    Transfer and terminal stations are distributed throughout the network 
+                    rather than forming one separate cluster. Several terminals, such as 
+                    31, 34, and 25, are actually fairly well connected and sit within the 
+                    main network rather than only at endpoints. However, some terminals 
+                    such as 46, 43, and 49 are isolated. Transfer stations generally appear 
+                    along connected chains; for example, 23, 29, and 38 each have several 
+                    connections, while 44, 47, and 50 are much more peripheral.
+                </p>
+            </div>
+
+           <div class="finding">
+                <h3>4. Which stations have high passenger volume?</h3>
+                <p>Answerability: Well</p>
+                <p>Most useful visualization: Both, although the node-link 
+                    visualization makes the differences easiest to see</p>
+                <p>
+                    Passenger volume is encoded by node size. Larger station 
+                    symbols indicate higher daily passenger volume. The adjacency 
+                    matrix also repeats these differently sized station symbols 
+                    along its axes. <br>
+                    The highest-volume stations are represented by the largest 
+                    symbols. Some of the most visually prominent examples include 
+                    Station 46, 41, and 36 in Central; 37, 47, and 42 in North; 
+                    43, 38, and 48 in South; 49, 44, and 39 in East; and 
+                    40, 50, and 45 in West. Stations such as 49, 40, 46, 37, and 43 
+                    are especially easy to identify because of their large symbols.
+               </p>
+            </div>
+
+            <div class="finding">
+                <h3>5. Where are the longest direct travel-time connections?</h3>
+                <p>Answerability: Well</p>
+                <p>Most useful visualization: Both</p>
+                <p>
+                    In the node-link visualization, thicker links represent longer 
+                    travel times. In the adjacency matrix, darker/more opaque cells 
+                    represent longer travel times. Using both views makes unusually 
+                    long links relatively easy to confirm. <br>
+                    The Station 31-Station 7 connection is one of the clearest longest 
+                    direct connections; it appears as an especially thick Express 
+                    link and a very dark corresponding matrix cell. Other relatively 
+                    long connections include Station 18-Station 34, Station 29-Station 
+                    30, Station 23-Station 4, and Station 18-Station 19. These stand out 
+                    through either high opacity in the matrix or thick lines in the 
+                    node-link graph
+                </p>
+            </div>
+
+            <div class="finding">
+                <h3>6. Are particular route types concentrated in particular parts of the network?</h3>
+                <p>Answerability: Well</p>
+                <p>Most useful visualization: Adjacency matrix, with the node-link 
+                    visualization as supporting evidence.</p>
+                <p>
+                    Route type is encoded by color: blue for Metro, orange for Express, 
+                    and gray for Shuttle. Because the matrix groups stations by district, 
+                    it is easy to see whether one color dominates a particular 
+                    district-to-district block. <br>
+                    There is no strong overall concentration of a single route type 
+                    in one part of the network. Metro, Express, and Shuttle links are 
+                    fairly mixed across the major district-pair blocks. There are some 
+                    mild tendencies, for example, Central-North and East-West contain 
+                    several Express routes, but these same regions also contain Metro and 
+                    Shuttle routes. The South-East block, which has the largest number of 
+                    connections overall, contains a mixture of all three route types rather 
+                    than being dominated by one. Therefore, route type appears relatively 
+                    dispersed across the network rather than geographically or topologically 
+                    segregated.
+                </p>
+            </div>
+        </section>
+
+        <p id="status" class="status" role="status"></p>
+    </main>
+
+    <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="lab5.js"></script>
 
 
 </body>
