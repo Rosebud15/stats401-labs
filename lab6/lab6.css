@@ -1,0 +1,148 @@
+.lab6-page {
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.lab6-page .lab6-header {
+    margin-bottom: 24px;
+}
+
+.lab6-page .lab6-intro,
+.lab6-page .lab6-chart-note {
+    max-width: 850px;
+}
+
+.lab6-page .lab6-legend-section,
+.lab6-page .lab6-chart-section,
+.lab6-page .lab6-design-section {
+    margin-top: 32px;
+}
+
+.lab6-page .lab6-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    align-items: center;
+    margin: 12px 0 6px;
+}
+
+.lab6-page .lab6-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.lab6-page .lab6-legend-swatch {
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    flex: 0 0 16px;
+}
+
+.lab6-page .lab6-chart {
+    width: 100%;
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.lab6-page .lab6-treemap-svg {
+    display: block;
+    width: 100%;
+    min-width: 720px;
+    height: auto;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+}
+
+.lab6-page .lab6-country-rect {
+    stroke: #ffffff;
+    stroke-width: 1.5px;
+    cursor: default;
+}
+
+.lab6-page .lab6-country-label,
+.lab6-page .lab6-country-value,
+.lab6-page .lab6-area-label,
+.lab6-page .lab6-continent-label {
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+}
+
+.lab6-page .lab6-country-label {
+    font-size: 12px;
+    font-weight: 600;
+    fill: #111111;
+}
+
+.lab6-page .lab6-country-value {
+    font-size: 11px;
+    fill: #222222;
+}
+
+.lab6-page .lab6-area-boundary {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.42);
+    stroke-width: 1.2px;
+    pointer-events: none;
+}
+
+.lab6-page .lab6-continent-boundary {
+    fill: none;
+    stroke: #222222;
+    stroke-width: 2px;
+    pointer-events: none;
+}
+
+.lab6-page .lab6-area-label {
+    font-size: 11px;
+    font-weight: 600;
+    fill: #333333;
+}
+
+.lab6-page .lab6-continent-label {
+    font-size: 13px;
+    font-weight: 700;
+    fill: #111111;
+}
+
+.lab6-page .lab6-tooltip {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    min-width: 180px;
+    max-width: 260px;
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid #9a9a9a;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.lab6-page .lab6-tooltip-title {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.lab6-page .lab6-design-section {
+    max-width: 880px;
+}
+
+.lab6-page .lab6-source-note {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #555555;
+}
+
+.lab6-page .lab6-error {
+    padding: 12px;
+    border: 1px solid #b84a4a;
+    border-radius: 4px;
+    background: #fff4f4;
+}

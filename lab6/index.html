@@ -1,24 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: GDP Hierarchy with Two Treemaps</title>
 
-    <title>Lab 6</title>
-    
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="lab6.css">
 </head>
-
 <body>
+    <header>
+            <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
 
-    <h1>Lab 6</h1>
-    <p>Lab 6 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
 
+    <main class="lab6-page">
+        <header class="lab6-header">
+            <h2>Lab 6: GDP Hierarchy with Two Treemaps</h2>
+            <p class="lab6-intro">
+                Both treemaps show the hierarchy <i>Continent → Area → Country</i>.
+                Rectangle area represents GDP in billions of U.S. dollars, while color represents 
+                GDP status.
+            </p>
+        </header>
 
+        <section class="lab6-legend-section" aria-labelledby="lab6-legend-title">
+            <h2 id="lab6-legend-title">GDP Status Legend</h2>
+            <div id="status-legend" class="lab6-legend" aria-label="GDP status color legend"></div>
+        </section>
+
+        <section class="lab6-chart-section" aria-labelledby="lab6-squarify-title">
+            <h2 id="lab6-squarify-title">Treemap 1: Squarify</h2>
+            <p class="lab6-chart-note">
+                Squarify favors compact rectangles, which makes country areas easier to compare.
+            </p>
+            <div id="treemap-squarify" class="lab6-chart" aria-live="polite"></div>
+        </section>
+
+        <section class="lab6-chart-section" aria-labelledby="lab6-slicedice-title">
+            <h2 id="lab6-slicedice-title">Treemap 2: Slice-Dice</h2>
+            <p class="lab6-chart-note">
+                Slice-Dice alternates horizontal and vertical subdivisions to make hierarchy 
+                levels visually explicit.
+            </p>
+            <div id="treemap-slicedice" class="lab6-chart" aria-live="polite"></div>
+        </section>
+
+        <section class="lab6-design-section" aria-labelledby="lab6-design-title">
+            <h2 id="lab6-design-title">Design Description</h2>
+            <p>
+                I use rectangle area to encode GDP because area is the defining 
+                quantitative channel of a treemap and makes part-to-whole relationships 
+                visible within each region. GDP status is categorical, so I encode it 
+                with three distinct hues: blue for Increase, neutral gray for Unchanged, 
+                and orange for Decrease. This avoids implying an ordered numeric scale 
+                while keeping the categories distinguishable. Continent and area labels 
+                occupy reserved header space inside their parent rectangles, and borders 
+                reinforce the Continent → Area → Country nesting without requiring extra 
+                color channels. Country names appear only when a rectangle is large enough 
+                to support readable text; every country remains accessible through the tooltip. 
+                <br>
+                I chose Squarify and Slice-Dice because they emphasize different aspects of 
+                the hierarchical data. Squarify attempts to create compact rectangles with 
+                relatively balanced aspect ratios, which makes rectangle area, and therefore GDP, 
+                easier to compare across countries. Slice-Dice instead alternates the subdivision 
+                direction at each level of the hierarchy, making the Continent → Area → Country 
+                structure easier to follow visually. I did not use Slice or Dice alone because 
+                they tend to produce long, narrow rectangles in a single orientation, which can 
+                reduce label readability and make area comparison more difficult. Binary also 
+                produces effective treemaps, but its visual organization is less distinctly 
+                different from Squarify. Using Squarify and Slice-Dice therefore provides a 
+                clearer comparison between quantitative readability and hierarchical readability.
+            </p>
+        </section>
+
+        <div id="lab6-tooltip" class="lab6-tooltip" role="tooltip" aria-hidden="true"></div>
+    </main>
+
+    <a href="../index.html">Back to Home</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="lab6.js"></script>
 </body>
-
 </html>
