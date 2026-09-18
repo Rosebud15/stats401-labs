@@ -1,24 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Lab 7</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7: Temporal Commercial Network</title>
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="lab7.css">
 </head>
-
 <body>
+    <header>
+        <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
 
-    <h1>Lab 7</h1>
-    <p>Lab 7 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
 
+    <h2>Lab 7: Temporal Data Visualization with D3</h2>
+    <p>
+        This visualization shows how commercial activity among 12 international companies changes across 60 days.
+        The timeline shows when total trade rises or falls, while the stable network below shows which companies are
+        connected, the direction of each transaction, and the value moving between them.
+    </p>
 
+    <div class="lab7-wrapper">
+        <div class="lab7-controls-panel">
+            <div class="lab7-btn-group">
+                <button id="play-btn" class="lab7-btn lab7-btn-play">▶ Play</button>
+                <button id="pause-btn" class="lab7-btn lab7-btn-pause">⏸ Pause</button>
+                <button id="reset-btn" class="lab7-btn lab7-btn-reset">↺ Reset</button>
+            </div>
+
+            <div class="lab7-slider-container">
+                <label for="time-slider">Day 1</label>
+                <input type="range" id="time-slider" min="1" max="60" value="1" step="1">
+                <label for="time-slider">Day 60</label>
+            </div>
+
+            <div id="date-label" class="lab7-date-badge">Day 1</div>
+        </div>
+
+        <div class="lab7-summary-bar">
+            <div class="lab7-stat-card">
+                <div class="lab7-card-label">Active Companies</div>
+                <div id="stat-active-companies" class="lab7-card-value">0</div>
+            </div>
+            <div class="lab7-stat-card">
+                <div class="lab7-card-label">Transaction Count</div>
+                <div id="stat-active-links" class="lab7-card-value">0</div>
+            </div>
+            <div class="lab7-stat-card">
+                <div class="lab7-card-label">Daily Value (USD)</div>
+                <div id="stat-daily-value" class="lab7-card-value">$0</div>
+            </div>
+        </div>
+
+        <div class="lab7-timeline-card">
+            <h2 class="lab7-section-heading">Total transaction value over 60 days</h2>
+            <p class="lab7-section-subtitle">Click anywhere on the chart to jump to that day.</p>
+            <svg id="lab7-volume-chart" aria-label="Daily total transaction value over 60 days"></svg>
+        </div>
+
+        <div class="lab7-viz-container">
+            <div id="tooltip" class="lab7-tooltip"></div>
+            <svg id="lab7-network-svg" aria-label="Daily commercial transaction network"></svg>
+
+            <div class="lab7-legend-container">
+                <div class="lab7-legend-section">
+                    <div class="lab7-legend-title">Sector (node color)</div>
+                    <div id="sector-legend" class="lab7-legend-items"></div>
+                </div>
+
+                <div class="lab7-legend-section">
+                    <div class="lab7-legend-title">Region (horizontal position)</div>
+                    <div id="region-legend" class="lab7-legend-items"></div>
+                </div>
+
+                <div class="lab7-legend-section">
+                    <div class="lab7-legend-title">Encodings</div>
+                    <div class="lab7-legend-items">
+                        <div>○ Node size = daily company volume</div>
+                        <div>→ Arrow = transaction direction</div>
+                        <div>━ Line width = transaction value</div>
+                        <div>◪ Line opacity = transaction count</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="lab7-analysis">
+            <h2>Network Analysis</h2>
+            <p>
+                The visualization reveals several changes in the commercial network
+                across the 60-day period.
+            </p>
+
+            <div class="lab7-analysis-question">
+                <h3>1. How does overall network connectivity change across the 60 days?</h3>
+                <p>
+                    Overall, the network becomes more connected and commercially active 
+                    over time. The earlier days tend to show fewer active relationships
+                     and more fragmented activity, while the later days contain more 
+                     simultaneous transactions and broader participation across the network.
+                      This change becomes especially noticeable during the final third of 
+                      the period.
+                </p>
+            </div>
+
+            <div class="lab7-analysis-question">
+                <h3>2. Which companies become more central or commercially active over time?</h3>
+                <p>
+                    Several companies become increasingly important as the network develops. 
+                    In particular, Ion Systems and Cedar Retail become more central because 
+                    they begin interacting with a wider range of companies and participate 
+                    in more commercial activity. Apex Textiles also becomes more active 
+                    later in the period. Other companies, such as Fusion Electronics, 
+                    remain commercially important but do not necessarily become more 
+                    structurally central because their activity is concentrated among a 
+                    smaller number of partners.
+                </p>
+            </div>
+
+            <div class="lab7-analysis-question">
+                <h3>3. Are there periods when the network consists of relatively separate clusters?</h3>
+                <p>
+                    Yes. The network is generally more fragmented during the earlier 
+                    days, when companies often form several small and relatively separate 
+                    groups. As time progresses, these groups become more interconnected. 
+                    However, the clusters are mostly temporary rather than permanent. 
+                    Companies that appear separated on an individual day are often connected 
+                    through transactions occurring on nearby days.
+                </p>
+            </div>
+
+            <div class="lab7-analysis-question">
+                <h3>4. Which commercial relationships appear, disappear, or become stronger over time?</h3>
+                <p>
+                    The network shows considerable turnover in commercial relationships. 
+                    Some relationships are active mainly during the beginning of the period 
+                    and later disappear, while others emerge during the middle or final 
+                    portion of the timeline. The later period introduces several new 
+                    relationships involving companies such as Ion Systems and Cedar Retail, 
+                    helping explain their growing importance in the network. Some existing 
+                    relationships also become stronger through more frequent or 
+                    higher-value transactions.
+                </p>
+            </div>
+
+            <div class="lab7-analysis-question">
+                <h3>5. Does the network become more or less cross-regional over time?</h3>
+                <p>
+                    The network becomes increasingly cross-regional over time. 
+                    Earlier activity includes a mixture of within-region and 
+                    cross-region transactions, while later activity is more strongly 
+                    dominated by connections between companies located in different 
+                    regions. This suggests that the commercial network becomes more 
+                    geographically integrated as the 60-day period progresses.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="lab7.js"></script>
 </body>
-
 </html>
