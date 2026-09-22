@@ -1,0 +1,157 @@
+section,cluster_name,count,proportion
+A 21st Century Curriculum,Duke / University / Kunshan,1,1.0
+A Liberal Arts College Experience,Duke / University / Kunshan,1,1.0
+Academic Advising,Duke / University / Kunshan,2,0.4
+Academic Advising,Students / Course / Skills,3,0.6
+Academic Integrity,Duke / University / Kunshan,2,0.3333
+Academic Integrity,Molecular / Systems / Chemistry,1,0.1667
+Academic Integrity,Student / Term / Students,3,0.5
+Academic Recognition and Honors,Credit / Courses / Placement,5,0.8333
+Academic Recognition and Honors,Duke / University / Kunshan,1,0.1667
+Academic Resource Center,Students / Course / Skills,4,1.0
+"Academic Warning, Probation, and Suspension for Students in the Class of 2025 and Beyond",Credit / Courses / Placement,3,0.3
+"Academic Warning, Probation, and Suspension for Students in the Class of 2025 and Beyond",Student / Term / Students,7,0.7
+"Academic Warning, Probation, and Suspension for Students in the Classes of 2022-2024",Credit / Courses / Placement,2,0.1538
+"Academic Warning, Probation, and Suspension for Students in the Classes of 2022-2024",Student / Term / Students,11,0.8462
+Accommodations,Student / Term / Students,3,1.0
+Animating Principles,Course / Media / Cultural,2,0.5
+Animating Principles,Duke / University / Kunshan,1,0.25
+Animating Principles,Students / Course / Skills,1,0.25
+Application Requirements,Chinese / China / Course,1,0.1429
+Application Requirements,Credit / Courses / Placement,4,0.5714
+Application Requirements,Duke / University / Kunshan,1,0.1429
+Application Requirements,Student / Term / Students,1,0.1429
+Application Timelines,Duke / University / Kunshan,1,0.1667
+Application Timelines,Student / Term / Students,5,0.8333
+Arts and Culture,Duke / University / Kunshan,1,1.0
+Athletics & University Sports,Duke / University / Kunshan,2,0.3333
+Athletics & University Sports,Student / Term / Students,1,0.1667
+Athletics & University Sports,Students / Course / Skills,3,0.5
+Blue Oasis Student Center,Students / Course / Skills,2,1.0
+Campus Engagement,Students / Course / Skills,1,1.0
+Campus Health Clinic,Student / Term / Students,2,1.0
+Campus Programs,Duke / University / Kunshan,2,0.6667
+Campus Programs,Students / Course / Skills,1,0.3333
+Career Services,Chinese / China / Course,1,0.1667
+Career Services,Duke / University / Kunshan,4,0.6667
+Career Services,Student / Term / Students,1,0.1667
+Changes in Status,Credit / Courses / Placement,2,0.1429
+Changes in Status,Duke / University / Kunshan,3,0.2143
+Changes in Status,Student / Term / Students,9,0.6429
+Chinese Student Services and Student Mobility,Chinese / China / Course,1,0.5
+Chinese Student Services and Student Mobility,Student / Term / Students,1,0.5
+Class Attendance and Missed Work,Student / Term / Students,4,1.0
+Class Scheduling,Student / Term / Students,1,1.0
+Compliance with Academic Regulations,Student / Term / Students,1,1.0
+Counseling and Psychological Services (CAPS),Duke / University / Kunshan,1,0.5
+Counseling and Psychological Services (CAPS),Student / Term / Students,1,0.5
+Course Audit,Duke / University / Kunshan,1,0.5
+Course Audit,Student / Term / Students,1,0.5
+Course Descriptions,Chinese / China / Course,90,0.1302
+Course Descriptions,Course / Media / Cultural,148,0.2142
+Course Descriptions,Credit / Courses / Placement,49,0.0709
+Course Descriptions,Duke / University / Kunshan,4,0.0058
+Course Descriptions,Molecular / Systems / Chemistry,95,0.1375
+Course Descriptions,Political / Course / Policy,168,0.2431
+Course Descriptions,Students / Course / Skills,137,0.1983
+Course Repeat,Credit / Courses / Placement,3,0.4286
+Course Repeat,Duke / University / Kunshan,2,0.2857
+Course Repeat,Student / Term / Students,2,0.2857
+Declaration of Major,Duke / University / Kunshan,2,1.0
+Degree Requirements,Chinese / China / Course,2,0.05
+Degree Requirements,Course / Media / Cultural,1,0.025
+Degree Requirements,Credit / Courses / Placement,16,0.4
+Degree Requirements,Duke / University / Kunshan,11,0.275
+Degree Requirements,Students / Course / Skills,10,0.25
+Dual Degrees,Duke / University / Kunshan,1,1.0
+Duke Kunshan University Community Standard,Duke / University / Kunshan,1,1.0
+Education Records,Duke / University / Kunshan,3,0.75
+Education Records,Student / Term / Students,1,0.25
+Eligibility for Courses,Credit / Courses / Placement,2,0.5
+Eligibility for Courses,Duke / University / Kunshan,1,0.25
+Eligibility for Courses,Student / Term / Students,1,0.25
+Entrance Credit and Placement,Chinese / China / Course,2,0.1176
+Entrance Credit and Placement,Credit / Courses / Placement,5,0.2941
+Entrance Credit and Placement,Duke / University / Kunshan,10,0.5882
+Estimated Expenses,Chinese / China / Course,2,0.1538
+Estimated Expenses,Credit / Courses / Placement,3,0.2308
+Estimated Expenses,Duke / University / Kunshan,1,0.0769
+Estimated Expenses,Student / Term / Students,7,0.5385
+Exclusion of Disruptive Students from a Course,Student / Term / Students,2,1.0
+Final Examinations,Student / Term / Students,3,1.0
+Grade Review Procedure,Duke / University / Kunshan,2,0.25
+Grade Review Procedure,Student / Term / Students,6,0.75
+Grading and Grade Requirements,Credit / Courses / Placement,11,0.4583
+Grading and Grade Requirements,Duke / University / Kunshan,6,0.25
+Grading and Grade Requirements,Molecular / Systems / Chemistry,1,0.0417
+Grading and Grade Requirements,Student / Term / Students,6,0.25
+Graduation and Commencement,Student / Term / Students,1,1.0
+Host Family Program,Duke / University / Kunshan,1,1.0
+Incomplete Coursework and Excused Absence from Final Exam,Student / Term / Students,4,1.0
+Independent Studies,Students / Course / Skills,2,1.0
+International Student Services,Chinese / China / Course,1,0.5
+International Student Services,Duke / University / Kunshan,1,0.5
+Key Components,Credit / Courses / Placement,4,0.5714
+Key Components,Duke / University / Kunshan,3,0.4286
+Leadership Development,Political / Course / Policy,2,1.0
+Majors (listed in alphabetical order),Chinese / China / Course,21,0.168
+Majors (listed in alphabetical order),Course / Media / Cultural,16,0.128
+Majors (listed in alphabetical order),Credit / Courses / Placement,23,0.184
+Majors (listed in alphabetical order),Molecular / Systems / Chemistry,20,0.16
+Majors (listed in alphabetical order),Political / Course / Policy,28,0.224
+Majors (listed in alphabetical order),Students / Course / Skills,17,0.136
+Mission Statement,Duke / University / Kunshan,1,1.0
+Notification and Responses,Credit / Courses / Placement,1,1.0
+Notification of Intention to Graduate,Duke / University / Kunshan,1,1.0
+Office of Global Education and Study Away,Duke / University / Kunshan,14,0.7368
+Office of Global Education and Study Away,Student / Term / Students,5,0.2632
+Overview,Course / Media / Cultural,1,0.1667
+Overview,Duke / University / Kunshan,2,0.3333
+Overview,Students / Course / Skills,3,0.5
+Part 11: Academic Calendar 2021-22,Student / Term / Students,21,1.0
+Part 12: Useful Contacts,Duke / University / Kunshan,3,1.0
+Part 1: General Information,Course / Media / Cultural,1,0.3333
+Part 1: General Information,Duke / University / Kunshan,1,0.3333
+Part 1: General Information,Political / Course / Policy,1,0.3333
+Part 7: Academic Advising and Support,Students / Course / Skills,1,1.0
+Partners,Chinese / China / Course,1,0.1667
+Partners,Duke / University / Kunshan,5,0.8333
+Principles of Selection,Duke / University / Kunshan,2,1.0
+Procedure for Resolution of Students' Academic Concerns,Duke / University / Kunshan,1,0.2
+Procedure for Resolution of Students' Academic Concerns,Student / Term / Students,4,0.8
+Progress toward Degree,Credit / Courses / Placement,4,0.5714
+Progress toward Degree,Duke / University / Kunshan,1,0.1429
+Progress toward Degree,Student / Term / Students,2,0.2857
+Refund,Student / Term / Students,12,1.0
+Registration,Duke / University / Kunshan,1,0.1429
+Registration,Student / Term / Students,6,0.8571
+Religious Holidays,Duke / University / Kunshan,1,0.5
+Religious Holidays,Student / Term / Students,1,0.5
+Requirements for All Majors,Credit / Courses / Placement,4,0.8
+Requirements for All Majors,Students / Course / Skills,1,0.2
+Residence Life,Duke / University / Kunshan,2,1.0
+Scholarships and Financial Aid,Credit / Courses / Placement,2,0.4
+Scholarships and Financial Aid,Duke / University / Kunshan,3,0.6
+Seven Principles of Duke Kunshan University Academic Advising,Students / Course / Skills,2,1.0
+Statement on Diversity and Inclusion,Course / Media / Cultural,1,0.5
+Statement on Diversity and Inclusion,Duke / University / Kunshan,1,0.5
+Student Affairs,Course / Media / Cultural,1,0.5
+Student Affairs,Students / Course / Skills,1,0.5
+Student Affairs Conceptual Framework,Duke / University / Kunshan,1,0.5
+Student Affairs Conceptual Framework,Political / Course / Policy,1,0.5
+Student Clubs and Organizations,Duke / University / Kunshan,1,1.0
+Student Conduct,Duke / University / Kunshan,1,0.3333
+Student Conduct,Student / Term / Students,2,0.6667
+Student Research Opportunities,Duke / University / Kunshan,2,1.0
+Submission of Term Paper,Credit / Courses / Placement,1,1.0
+The Provision of Academic Information to Parents and Guardians,Student / Term / Students,1,1.0
+Time Limit for Completing Undergraduate Degree,Duke / University / Kunshan,1,1.0
+Transfer of Work Taken Elsewhere,Duke / University / Kunshan,8,1.0
+Tuition and Fees,Duke / University / Kunshan,1,0.5
+Tuition and Fees,Student / Term / Students,1,0.5
+Two-Credit Writing Courses,Credit / Courses / Placement,1,1.0
+Undergraduate Course Load,Credit / Courses / Placement,6,0.2727
+Undergraduate Course Load,Duke / University / Kunshan,1,0.0455
+Undergraduate Course Load,Student / Term / Students,15,0.6818
+Who We Are,Duke / University / Kunshan,5,0.8333
+Who We Are,Student / Term / Students,1,0.1667

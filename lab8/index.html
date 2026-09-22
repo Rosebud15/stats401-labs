@@ -1,24 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Lab 8</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8: Web Text Data and Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="lab8.css">
 </head>
+<body class="lab8-page">
+    <header>
+        <h1>STATS 401: Data Acquisition and Visualization</h1>
+    </header>
+    <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+    </nav>
 
-<body>
+    <main class="lab8-main">
+        <header class="lab8-header">
+            <h2>Lab 8: Web Text Data and Visualization</h2>
+            <p class="lab8-subtitle">Interactive exploration of the DKU Undergraduate Bulletin</p>
+        </header>
 
-    <h1>Lab 8</h1>
-    <p>Lab 8 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+        <section class="lab8-section" id="corpus-description">
+            <h3>1. Bulletin / Corpus Description</h3>
+            <div id="lab8-bulletin-meta" class="lab8-meta-grid"></div>
+            <div id="lab8-corpus-stats" class="lab8-stat-grid"></div>
+        </section>
 
+        <section class="lab8-section" id="corpus-overview">
+            <h3>2. Corpus Overview</h3>
+            <div class="lab8-two-column">
+                <div class="lab8-card">
+                    <h3>Top Meaningful Terms</h3>
+                    <svg id="lab8-terms-chart" class="lab8-small-chart" role="img" aria-label="Top meaningful terms"></svg>
+                </div>
+                <div class="lab8-card">
+                    <h3>Passages by Formal Section</h3>
+                    <svg id="lab8-sections-chart" class="lab8-small-chart" role="img" aria-label="Passages by formal section"></svg>
+                </div>
+            </div>
+        </section>
 
+        <section class="lab8-section" id="semantic-map-section">
+            <h3>3. Semantic Embedding Map</h3>
+            <p>
+                Each point is one bulletin passage. Position comes from UMAP, color shows semantic topic,
+                and point size shows passage length. UMAP axes themselves do not have independent meanings.
+            </p>
+
+            <div class="lab8-controls">
+                <label>
+                    Search text
+                    <input id="lab8-search" type="search" placeholder="Try credit, graduation, registration...">
+                </label>
+                <label>
+                    Formal section
+                    <select id="lab8-section-filter"><option value="all">All sections</option></select>
+                </label>
+                <label>
+                    Semantic topic
+                    <select id="lab8-topic-filter"><option value="all">All topics</option></select>
+                </label>
+                <button id="lab8-reset" type="button">Reset</button>
+            </div>
+
+            <div id="lab8-topic-legend" class="lab8-legend"></div>
+
+            <div class="lab8-map-layout">
+                <div class="lab8-card lab8-map-card">
+                    <svg id="lab8-semantic-map" role="img" aria-label="Semantic embedding map"></svg>
+                </div>
+                <aside id="lab8-detail-panel" class="lab8-card lab8-detail-panel">
+                    <h3>Passage Details</h3>
+                    <p>Click a point to inspect its passage and five nearest semantic neighbors.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="lab8-section" id="matrix-section">
+            <h3>4. Topic × Bulletin Section Matrix</h3>
+            <p>
+                Rows are formal bulletin sections, columns are semantic topics, and darker cells contain more passages.
+                Click a cell to highlight the matching passages in the semantic map. Scroll down to see more of the
+                matrix.
+            </p>
+            <div class="lab8-card lab8-matrix-wrap">
+                <svg id="lab8-matrix" role="img" aria-label="Topic by bulletin section matrix"></svg>
+            </div>
+        </section>
+
+        <section class="lab8-section" id="findings-section">
+            <h3>5. Semantic Findings</h3>
+            <p>
+                Answer at least four of the following after exploring the semantic map, matrix,
+                search results, nearest neighbors, and underlying bulletin passages.
+            </p>
+
+            <article class="lab8-finding">
+                <h3>1. What are the major semantic topics?</h3>
+                <p>Political / Course / Policy (200), Students / Course / Skills (189), 
+                    Course / Media / Cultural (171), Student / Term / Students (156), 
+                    Credit / Courses / Placement (151), Duke / University / Kunshan (133), 
+                    Chinese / China / Course (122), Molecular / Systems / Chemistry (117).</p>
+            </article>
+
+            <article class="lab8-finding">
+                <h3>2. Which topics appear across multiple formal sections?</h3>
+                <p>Duke / University / Kunshan spans 54 sections; Student / Term / Students 
+                    spans 38 sections; Credit / Courses / Placement spans 21 sections.</p>
+            </article>
+
+            <article class="lab8-finding">
+                <h3>3. Which formal sections contain the most semantically diverse content?</h3>
+                <p>Course Descriptions contains 7 topics; Majors (listed in alphabetical order) 
+                    contains 6 topics; Degree Requirements contains 5 topics; Application 
+                    Requirements contains 4 topics</p>
+            </article>
+
+            <article class="lab8-finding">
+                <h3>4. Which passages from different sections are semantically similar?</h3>
+                <p>Academic Warning, Probation, and Suspension for Students in the Classes 
+                    of 2022-2024 (p. 58) and Academic Warning, Probation, and Suspension 
+                    for Students in the Class of 2025 and Beyond (p. 60) 
+                    have cosine similarity 0.99: “Students on academic probation must 
+                    clear their probationary status as described above (see se…” / 
+                    “Students on academic probation must clear their probationary status as 
+                    described above (see se…” Academic Warning, Probation, and Suspension for 
+                    Students in the Classes of 2022-2024 (p. 58) and Academic Warning, Probation, 
+                    and Suspension for Students in the Class of 2025 and Beyond (p. 60) have 
+                    cosine similarity 0.99: “Students who fail to meet the minimum 
+                    requirements to clear their probationary status are subj…” / “Students 
+                    who fail to meet the minimum requirements to clear their probationary status 
+                    are subj…”</p>
+            </article>
+
+            <article class="lab8-finding">
+                <h3>6. Do credit, graduation, registration, or academic integrity occur in one 
+                    semantic region or across several topics?</h3>
+                <p>“Credit” appears in 169 passages across 8 topic region(s); “graduation” 
+                    appears in 33 passages across 3 topic region(s); “registration” 
+                    appears in 9 passages across 2 topic region(s); “academic integrity” 
+                    appears in 3 passages across 2 topic region(s)</p>
+            </article>
+        </section>
+
+        <section class="lab8-section" id="design-section">
+            <h3>6. Design Description</h3>
+            <div class="lab8-card lab8-design-text">
+                <p>
+                    I treated each meaningful paragraph or short policy block as one document unit while preserving its chapter,
+                    section, subsection, page number, and original text. The preprocessing script removes table-of-contents pages,
+                    page numbers, very short fragments, and duplicate passages. I generated semantic vectors with the
+                    <i>all-MiniLM-L6-v2</i> SentenceTransformer model. I then reduced those vectors to two dimensions with
+                    UMAP using 15 neighbors, a minimum distance of 0.15, cosine distance, and random state 401. KMeans clustering
+                    was applied to the original high-dimensional embedding vectors with eight clusters. Each cluster is summarized
+                    with its highest TF-IDF terms and representative passages in the generated cluster report, and the displayed
+                    topic names are constructed directly from those characteristic terms.
+                </p>
+                <p>
+                    In the semantic map, position represents the UMAP projection, color represents semantic topic, and point size
+                    represents passage length. Search and section/topic filters make it possible to compare formal document structure
+                    with semantic structure, while zoom and pan support closer inspection of dense regions. Clicking a passage keeps
+                    its details visible and highlights five nearest neighbors calculated from the original embedding space rather than
+                    from the 2D map. The Topic × Section matrix summarizes where each semantic topic occurs in the bulletin's formal
+                    organization. The two views are coordinated: selecting a passage highlights its matrix cell, and selecting a matrix
+                    cell highlights the corresponding passages on the map. Together, these interactions reveal themes that cross section
+                    boundaries and help distinguish structural proximity from semantic similarity.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <div id="lab8-tooltip" class="lab8-tooltip" aria-hidden="true"></div>
+    <a href="../index.html">Back to Home</a>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="lab8.js"></script>
 </body>
-
 </html>

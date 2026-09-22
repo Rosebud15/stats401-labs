@@ -1,0 +1,253 @@
+/* Every Lab 8 rule is scoped to body.lab8-page so it cannot leak into other labs. */
+
+body.lab8-page .lab8-main {
+    width: 100%;
+}
+
+body.lab8-page .lab8-header {
+    margin-bottom: 28px;
+}
+
+body.lab8-page .lab8-subtitle {
+    margin-top: -8px;
+    color: #555;
+}
+
+body.lab8-page .lab8-section {
+    margin: 36px 0;
+}
+
+body.lab8-page .lab8-section h2 {
+    margin-bottom: 12px;
+}
+
+body.lab8-page .lab8-section h3 {
+    margin-top: 0;
+}
+
+body.lab8-page .lab8-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+}
+
+body.lab8-page .lab8-meta-grid,
+body.lab8-page .lab8-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+body.lab8-page .lab8-meta-item,
+body.lab8-page .lab8-stat-item {
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 12px;
+    overflow-wrap: anywhere;
+}
+
+body.lab8-page .lab8-stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+body.lab8-page .lab8-two-column,
+body.lab8-page .lab8-map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+body.lab8-page .lab8-two-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.lab8-page .lab8-small-chart {
+    width: 100%;
+    min-height: 330px;
+    display: block;
+}
+
+body.lab8-page .lab8-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: end;
+    margin: 18px 0 12px;
+}
+
+body.lab8-page .lab8-controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body.lab8-page .lab8-controls input,
+body.lab8-page .lab8-controls select,
+body.lab8-page .lab8-controls button {
+    font: inherit;
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background: #fff;
+}
+
+body.lab8-page .lab8-controls button {
+    cursor: pointer;
+}
+
+body.lab8-page .lab8-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin: 10px 0 16px;
+    font-size: 13px;
+}
+
+body.lab8-page .lab8-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+body.lab8-page .lab8-legend-swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+body.lab8-page .lab8-map-card {
+    padding: 8px;
+}
+
+body.lab8-page #lab8-semantic-map {
+    width: 100%;
+    min-height: 570px;
+    display: block;
+    background: #fafafa;
+}
+
+body.lab8-page .lab8-map-point {
+    cursor: pointer;
+    stroke: #fff;
+    stroke-width: 0.7px;
+}
+
+body.lab8-page .lab8-map-point.lab8-muted {
+    opacity: 0.08;
+}
+
+body.lab8-page .lab8-map-point.lab8-selected {
+    stroke: #111;
+    stroke-width: 3px;
+    opacity: 1;
+}
+
+body.lab8-page .lab8-map-point.lab8-neighbor {
+    stroke: #111;
+    stroke-width: 1.8px;
+    opacity: 1;
+}
+
+body.lab8-page .lab8-detail-panel {
+    max-height: 620px;
+    overflow-y: auto;
+}
+
+body.lab8-page .lab8-detail-meta {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+body.lab8-page .lab8-neighbor-list {
+    padding-left: 20px;
+}
+
+body.lab8-page .lab8-neighbor-list li {
+    margin-bottom: 9px;
+}
+
+body.lab8-page .lab8-matrix-wrap {
+    overflow: auto;
+    max-height: 900px;
+}
+
+body.lab8-page #lab8-matrix {
+    display: block;
+}
+
+body.lab8-page .lab8-matrix-cell {
+    cursor: pointer;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+body.lab8-page .lab8-matrix-cell.lab8-cell-selected {
+    stroke: #111;
+    stroke-width: 3px;
+}
+
+body.lab8-page .lab8-finding {
+    border-left: 4px solid #ddd;
+    padding: 4px 0 4px 14px;
+    margin: 18px 0;
+}
+
+body.lab8-page .lab8-finding h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+body.lab8-page .lab8-design-text p:first-child {
+    margin-top: 0;
+}
+
+body.lab8-page .lab8-design-text p:last-child {
+    margin-bottom: 0;
+}
+
+body.lab8-page .lab8-tooltip {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 330px;
+    padding: 9px 11px;
+    border-radius: 6px;
+    background: rgba(25, 25, 25, 0.94);
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0;
+}
+
+body.lab8-page .lab8-axis text,
+body.lab8-page .lab8-chart-label {
+    font-size: 11px;
+}
+
+body.lab8-page .lab8-chart-bar {
+    fill: #777;
+}
+
+body.lab8-page .lab8-error {
+    border: 1px solid #c44;
+    background: #fff4f4;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+@media (max-width: 800px) {
+    body.lab8-page .lab8-two-column,
+    body.lab8-page .lab8-map-layout {
+        grid-template-columns: 1fr;
+    }
+}
