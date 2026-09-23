@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualization Critique and Redesign | DKU DNAS Research</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Visualization Critique and Redesign</p>
+      <h1>Redesigning the DKU DNAS Research Explorer</h1>
+      <p class="hero-copy">
+        A critique and D3.js redesign of Duke Kunshan University's Division of Natural and Applied Sciences
+        research visualization, with an emphasis on overview, comparison, hierarchy, and interdisciplinary faculty.
+      </p>
+      <div class="hero-links">
+        <a href="#original">Original visualization</a>
+        <a href="#redesign">Redesign</a>
+        <a href="#report">Report</a>
+      </div>
+
+      <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../dnas_critique_redesign/index.html">Visualization Critique and Redesign</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+      </nav>
+    </header>
+
+    <section id="original" class="section-block">
+      <div class="section-heading">
+        <p class="section-kicker">Part 1</p>
+        <h2>Original visualization</h2>
+        <p>
+          The public DNAS research page provides two representations of the same research structure: a force-directed
+          node-link network and a collapsible hierarchical tree. The network emphasizes connectedness, while the tree
+          makes parent-child relationships easier to trace.
+        </p>
+      </div>
+
+      <div class="original-grid">
+        <figure class="figure-card">
+          <img src="assets/original-network.png" alt="Original DKU DNAS force-directed research network." />
+          <figcaption><strong>Network view.</strong> Faculty and research relationships are arranged by a force simulation.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="assets/original-network-zoomed.png" alt="Zoomed-in view of the DKU DNAS force-directed research network." />
+          <figcaption><strong>Close-up network view.</strong> Certain data is not explained clearly.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="assets/original-tree.png" alt="Original DKU DNAS collapsible hierarchical research tree." />
+          <figcaption><strong>Tree view.</strong> Users expand Area → research area → topic → faculty.</figcaption>
+        </figure>
+      </div>
+
+      <div class="source-note">
+        <strong>Source:</strong>
+        <a href="https://dnas.dukekunshan.edu.cn/research/" target="_blank" rel="noreferrer">Duke Kunshan University, Division of Natural and Applied Sciences — Research</a>.
+        Screenshots captured September 20, 2026. The hierarchy and faculty metadata were reconstructed from the public site's visualization data, including research-interest and teaching/major-support fields.
+      </div>
+    </section>
+
+    <section id="redesign" class="section-block redesign-block">
+      <div class="section-heading">
+        <p class="section-kicker">Part 2</p>
+        <h2>Redesigned research explorer</h2>
+        <p>
+          The redesign keeps the hierarchy visible without forcing users to open one branch at a time. It also adds
+          direct counts, compact within-area comparisons, and coordinated highlighting. Faculty metadata makes the
+          explorer searchable by research interest, course, teaching-major support, and faculty classification.
+        </p>
+      </div>
+
+      <div id="load-error" class="error-box" hidden>
+        The CSV could not be loaded. If you opened this page directly from your computer, run a local server
+        (for example, <code>python3 -m http.server</code>) and open the localhost URL instead.
+      </div>
+
+      <div id="summary-metrics" class="metric-grid" aria-label="Dataset summary"></div>
+      <p class="data-scope-note">
+        The main directory preserves the public Area → topic → faculty hierarchy. Additional faculty metadata is revealed
+        on selection and used for search, so richer detail does not overwhelm the overview.
+      </p>
+
+      <div class="viz-panel overview-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Overview</p>
+            <h3>Research-area size at a glance</h3>
+          </div>
+          <p class="panel-note">Bars show faculty memberships, not unique people across the whole division.</p>
+        </div>
+        <div id="area-overview" class="overview-chart" aria-label="Bar chart of faculty memberships by research area"></div>
+      </div>
+
+      <div class="viz-panel explorer-panel">
+        <div class="panel-heading explorer-heading">
+          <div>
+            <p class="panel-kicker">Explore</p>
+            <h3>Browse all areas, topics, and faculty</h3>
+          </div>
+          <p id="results-status" class="panel-note" aria-live="polite"></p>
+        </div>
+
+        <div class="controls" aria-label="Visualization controls">
+          <label class="search-control">
+            <span>Search faculty, topic, interest, course, or major support</span>
+            <input id="search-input" type="search" placeholder="Try “IoT”, “COMPSCI205”, or a faculty name" autocomplete="off" />
+          </label>
+
+          <label class="select-control">
+            <span>Order topics</span>
+            <select id="sort-select">
+              <option value="source">Original order</option>
+              <option value="count">Most faculty first</option>
+              <option value="alpha">Alphabetical</option>
+            </select>
+          </label>
+
+          <label class="check-control">
+            <input id="cross-only" type="checkbox" />
+            <span>Faculty shown in multiple tree areas only</span>
+          </label>
+
+          <button id="clear-button" class="clear-button" type="button">Clear filters</button>
+        </div>
+
+        <div class="legend" aria-label="Legend">
+          <span class="legend-item"><span class="legend-dot regular-dot"></span>Faculty membership</span>
+          <span class="legend-item"><span class="legend-cross">↗</span>Appears in more than one top-level area in the public tree</span>
+          <span class="legend-item">Click a faculty name for research interests, courses, major support, and profile details.</span>
+        </div>
+
+        <div id="faculty-detail" class="faculty-detail" hidden aria-live="polite"></div>
+        <div id="research-directory" class="research-grid"></div>
+      </div>
+    </section>
+
+    <section id="report" class="section-block report-block">
+      <div class="section-heading">
+        <p class="section-kicker">Part 3</p>
+        <h2>Visualization Critique and Redesign Report</h2>
+        <p class="word-count">Approximately 770 words</p>
+      </div>
+
+      <article class="report-article">
+        <h3>Original visualization and context</h3>
+        <p>
+          Duke Kunshan University's Division of Natural and Applied Sciences (DNAS) research page uses an interactive
+          visualization to organize faculty by broad research area and more specific research topic. The interface can
+          switch between a force-directed network and a collapsible hierarchical tree. Its intended message is that DNAS
+          research is organized into recognizable areas while still containing relationships and overlap among topics and
+          faculty. Likely audiences include current and prospective students looking for research mentors, faculty seeking
+          collaborators, and visitors trying to understand the division's research landscape. Important tasks include
+          locating a professor, finding researchers in a topic, comparing areas, understanding the hierarchy, and identifying
+          interdisciplinary connections.
+        </p>
+        <p>
+          The reconstructed hierarchy contains 60 unique faculty and 29 area-topic groups. Additional public graph data
+          provide richer faculty metadata, including research interests, research classifications, teaching-major support,
+          and courses taught. I use those fields in the redesign to make search and faculty lookup more useful, rather than
+          treating them as new quantitative measures of research quality or productivity.
+        </p>
+
+        <h3>Strengths</h3>
+        <p>
+          The original interface has two notable strengths. First, it offers multiple representations of the same data.
+          The force-directed view emphasizes connectedness, while the tree gives hierarchical position a clear meaning:
+          users can follow Area → broad research area → topic → faculty. Second, the tree uses progressive disclosure.
+          Instead of showing every faculty member immediately, users expand only the branches relevant to them. The network
+          also supports zooming, dragging, searching, and clickable nodes. These features show that the original is designed
+          for exploration rather than being purely decorative.
+        </p>
+
+        <h3>Critique</h3>
+        <p>
+          The central weakness is that the two views divide useful tasks rather than supporting them together. The network
+          provides a broad overview but is visually dense. Its force-generated positions are not a direct data encoding, so
+          viewers may interpret proximity as meaningful even when it partly results from simulation forces. Large translucent
+          circles used for major research pillars dominate the visual hierarchy even though their area does not clearly encode
+          a quantitative value. Faculty labels also compete with nodes and links, making lookup difficult.
+        </p>
+        <p>
+          The tree solves some of those problems but creates others. Parent-child relationships are clearer, yet each
+          hierarchical level requires another horizontal column. A short path such as Area → Biological, behavioral sciences
+          and health → Biology → Yiu Wing Kam can therefore stretch across much of the page while large regions remain empty.
+          Progressive disclosure also makes comparison dependent on interaction and memory: comparing molecular biology with
+          artificial intelligence requires opening separate branches and remembering what was previously shown. Useful summaries
+          such as topic counts or faculty-membership counts are not displayed directly. Finally, repeated faculty in different
+          branches can indicate interdisciplinarity, but the duplication itself is not explained.
+        </p>
+
+        <h3>Redesign rationale</h3>
+        <p>
+          My first redesign decision was to replace the single branching canvas with four faceted area panels. Research topics
+          remain grouped within each area, so the hierarchy is preserved through enclosure and alignment rather than large
+          horizontal offsets. This keeps substantially more of the structure visible at once and makes cross-area comparison easier.
+        </p>
+        <p>
+          Second, I added direct counts and compact bars. The redesign reports faculty memberships and topic counts instead of
+          requiring viewers to count nodes. A separate overview chart makes differences among the four areas easier to compare
+          without implying that visual area represents importance.
+        </p>
+        <p>
+          Third, I made interdisciplinary membership explicit. Faculty who appear in more than one top-level area in the public
+          tree receive an ↗ marker; selecting a faculty member highlights every occurrence and lists each area-topic membership.
+          The richer faculty data are also revealed on selection: the detail panel shows research interests, primary and secondary
+          research classifications, teaching-major support, listed courses, email, and faculty profile link. Search now matches not
+          only names and topics but also research interests, course codes, and major-support fields. This supports a realistic student
+          task such as finding faculty connected to “IoT” or a particular course without adding permanent clutter to the overview.
+        </p>
+
+        <h3>Original vs. redesign and limitations</h3>
+        <p>
+          Compared with the original, the redesign makes overview, lookup, and cross-category comparison easier because the major
+          areas remain visible together and text labels are primary marks rather than annotations on a network. It sacrifices some
+          of the organic network appearance and intentionally repeats faculty names to preserve local context. Coordinated highlighting
+          makes those repeated identities explicit. The source files also contain inconsistent capitalization and some research/teaching
+          taxonomy labels that do not align perfectly; I preserve those values rather than silently correcting them. The redesign therefore
+          communicates membership and recorded metadata, not research intensity, publication volume, collaboration strength, or faculty performance.
+        </p>
+
+        <h3>References</h3>
+        <p>
+          Duke Kunshan University, Division of Natural and Applied Sciences. “Research.”
+          <a href="https://dnas.dukekunshan.edu.cn/research/" target="_blank" rel="noreferrer">https://dnas.dukekunshan.edu.cn/research/</a>.
+          Accessed September 2026. Original screenshots and datasets reconstructed from the public site's visualization data.
+        </p>
+      </article>
+      <nav class="lab-nav"> 
+        <a href="../index.html">Back to Home</a>
+    </nav>
+    </section>
+  </main>
+  
+  <script src="main.js"></script>
+</body>
+</html>
