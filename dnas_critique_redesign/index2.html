@@ -66,8 +66,7 @@
       <div class="source-note">
         <strong>Source:</strong>
         <a href="https://dnas.dukekunshan.edu.cn/research/" target="_blank" rel="noreferrer">Duke Kunshan University, Division of Natural and Applied Sciences — Research</a>.
-        Original overview screenshots captured September 20, 2026; search examples captured September 25, 2026. The hierarchy and faculty metadata were reconstructed from 
-        the public site's visualization data, including research-interest and teaching/major-support fields.
+        Original overview screenshots captured September 20, 2026; search examples captured September 25, 2026. The hierarchy and faculty metadata were reconstructed from the public site's visualization data, including research-interest and teaching/major-support fields.
       </div>
     </section>
 
@@ -151,7 +150,7 @@
       <div class="section-heading">
         <p class="section-kicker">Part 3</p>
         <h2>Visualization Critique and Redesign Report</h2>
-        <p class="word-count">Approximately 790 words</p>
+        <p class="word-count">Approximately 766 words (including figure captions)</p>
       </div>
 
       <article class="report-article">
@@ -162,14 +161,13 @@
           switch between a force-directed network and a collapsible hierarchical tree. Its intended message is that DNAS
           research is organized into recognizable areas while still containing relationships and overlap among topics and
           faculty. Likely audiences include current and prospective students looking for research mentors, faculty seeking
-          collaborators, and visitors trying to understand the division's research landscape. Important tasks include
-          locating a professor, finding researchers in a topic, comparing areas, understanding the hierarchy, and identifying
-          interdisciplinary connections.
+          collaborators, and visitors exploring DNAS research. Tasks include finding faculty, comparing areas,
+          tracing the hierarchy, and identifying interdisciplinary connections.
         </p>
         <p>
-          The reconstructed hierarchy contains 60 faculty and 29 area-topic groups. Public graph data provides
-          faculty metadata, including research interests, research classifications, teaching-major support,
-          and courses taught. I use those fields in the redesign to make search and faculty lookup more useful.
+          The reconstructed hierarchy contains 60 faculty and 29 area-topic groups. Public graph data add interests,
+          research classifications, teaching-major support, and courses. These fields improve search and faculty lookup;
+          they are not measures of research quality or productivity.
         </p>
 
         <h3>Strengths</h3>
@@ -187,7 +185,7 @@
           provides a broad overview but is visually dense. Its force-generated positions are not a direct data encoding, so
           viewers may interpret proximity as meaningful even when it partly results from simulation forces. Large translucent
           circles used for major research pillars dominate the visual hierarchy even though their area does not clearly encode
-          a quantitative value. Faculty labels also compete with nodes and links, making lookup difficult. Additionally, 
+          a quantitative value. Faculty labels also compete with nodes and links, making lookup difficult. Additionally, when
           searching changes the color of tiny points, making matches easy to miss (Figure 1). Faculty-label colors also
           lack a legend.
         </p>
@@ -197,25 +195,22 @@
           </a>
           <figcaption><strong>Figure 1. Original network search.</strong> The “iot” result appears as a small colored point among many other marks. Click to enlarge.</figcaption>
         </figure>
-
         <p>
           The tree solves some of those problems but creates others. Parent-child relationships are clearer, yet each
           hierarchical level requires another horizontal column. A short path such as Area → Biological, behavioral sciences
           and health → Biology → Yiu Wing Kam can therefore stretch across much of the page while large regions remain empty.
           Progressive disclosure also makes comparison dependent on interaction and memory: comparing molecular biology with
           artificial intelligence requires opening separate branches and remembering what was previously shown. Useful summaries
-          such as topic counts or faculty-membership counts are not displayed directly. At times, the visualization fails to load
-          correctly at all (Figure 2). Finally, repeated faculty in different branches can indicate interdisciplinarity, but the 
-          duplication itself is not explained.
+          such as topic counts or faculty-membership counts are not displayed directly. In the captured “iot” search,
+          the tree does not clearly surface matching faculty (Figure 2). Repeated faculty in different branches can
+          indicate interdisciplinarity, but this duplication is not explained.
         </p>
-
         <figure class="report-evidence" id="report-figure-2">
-          <a href="assets/original-tree-swap.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot of the original tree search">
-            <img src="assets/original-tree-swap.png" loading="lazy" alt="Original research tree has failed to load correctly." />
+          <a href="assets/original-iot-tree-search.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot of the original tree search">
+            <img src="assets/original-iot-tree-search.png" loading="lazy" alt="Original research tree with iot entered in its search field; broad area branches remain visible but matching faculty are not immediately apparent." />
           </a>
-          <figcaption><strong>Figure 2. Original tree search.</strong> Attempting to swap between views can fail. Click to enlarge.</figcaption>
+          <figcaption><strong>Figure 2. Original tree search.</strong> Entering “iot” does not clearly identify matching faculty within the displayed hierarchy. Click to enlarge.</figcaption>
         </figure>
-
 
         <h3>Redesign rationale</h3>
         <p>
@@ -234,20 +229,18 @@
           The richer faculty data are also revealed on selection: the detail panel shows research interests, primary and secondary
           research classifications, teaching-major support, listed courses, email, and faculty profile link. Search now matches not
           only names and topics but also interests, courses, and major-support fields. An “IoT” search reveals matching faculty
-          across three areas (Figure 3) without adding clutter to the overview.
+          across three areas (Figure 3) without adding permanent clutter to the overview.
         </p>
-        
 
         <h3>Original vs. redesign and limitations</h3>
         <p>
           Compared with the original, the redesign makes overview, lookup, and cross-category comparison easier because the major
           areas remain visible together and text labels are primary marks rather than annotations on a network. It sacrifices some
           of the organic network appearance and intentionally repeats faculty names to preserve local context. Coordinated highlighting
-          makes those repeated identities explicit. I preserve inconsistent capitalization and imperfectly aligned research and teaching
-          taxonomies from the source. The redesign therefore communicates membership and recorded metadata, not research intensity, 
-          publication volume, collaboration strength, or faculty performance.
+          makes those repeated identities explicit. I preserve inconsistent capitalization and imperfectly aligned research
+          and teaching taxonomies from the source. The redesign therefore
+          communicates membership and recorded metadata, not research intensity, publication volume, collaboration strength, or faculty performance.
         </p>
-
         <figure class="report-evidence" id="report-figure-3">
           <a href="assets/redesign-iot-search-results.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot of the redesigned IoT search results">
             <img src="assets/redesign-iot-search-results.png" loading="lazy" alt="Redesigned faculty explorer filtered by IoT, showing four unique faculty across three area panels with named results and indicators for repeated faculty." />

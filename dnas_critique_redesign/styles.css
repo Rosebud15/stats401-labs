@@ -586,6 +586,39 @@ button:focus-visible,
 
 .report-article p { margin-bottom: 14px; }
 
+.report-article .report-evidence {
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  border: 1px solid #dce3ee;
+  border-radius: 12px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+.report-article .report-evidence a {
+  display: block;
+  padding: 12px;
+  line-height: 0;
+}
+.report-article .report-evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.report-article .report-evidence figcaption {
+  padding: 0.8rem 1rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #39465a;
+  border-top: 1px solid #e4eaf2;
+}
+.report-article .report-evidence a:focus-visible {
+  outline: 3px solid #3768a2;
+  outline-offset: -3px;
+}
+
 @media (max-width: 920px) {
   .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .controls { grid-template-columns: 1fr 1fr; }
