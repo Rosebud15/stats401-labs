@@ -4,9 +4,6 @@
 This script downloads the DKU bulletin into ../data/, extracts and cleans meaningful
 passages, preserves document hierarchy, creates semantic embeddings, runs UMAP and
 KMeans, calculates nearest semantic neighbors, and writes the data files used by D3.
-
-It intentionally does NOT answer the assignment's analytical questions. Those findings
-should be written by the student after exploring the visualization and source passages.
 """
 
 from __future__ import annotations
