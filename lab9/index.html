@@ -1,24 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A linked D3 choropleth and proportional-circle cartogram of 2025 nominal GDP for the 50 largest economies.">
+  <title>Lab 9 | Geospatial Visualization</title>
 
-    <title>Lab 9</title>
-    
-    <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./lab9.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="./lab9.js" defer></script>
 </head>
+<body class="lab9-page">
+  <main id="lab9-app" class="lab9">
+    <header class="lab9-hero">
+      <p class="lab9-kicker">STATS 401 · Lab 9 · Geospatial Visualization</p>
+      <h1>Global GDP, two ways</h1>
+      <p class="lab9-intro">How does the picture change when GDP controls a country's color instead of its visual area? Compare an undistorted geographic map with a proportional-area Dorling cartogram using the same 2025 nominal GDP data.</p>
+      <nav class="lab-nav">
+        <a href="../lab1/index.html">Lab 1</a>
+        <a href="../lab2/index.html">Lab 2</a>
+        <a href="../lab3/index.html">Lab 3</a>
+        <a href="../lab4/index.html">Lab 4</a>
+        <a href="../lab5/index.html">Lab 5</a>
+        <a href="../lab6/index.html">Lab 6</a>
+        <a href="../lab7/index.html">Lab 7</a>
+        <a href="../lab8/index.html">Lab 8</a>
+        <a href="../dnas_critique_redesign/index.html">Visualization Critique and Redesign</a>
+        <a href="../lab9/index.html">Lab 9</a>
+        <a href="../lab10/index.html">Lab 10</a>
+      </nav>
+    </header>
 
-<body>
+    <section aria-labelledby="lab9-data-heading" class="lab9-context">
+      <div>
+        <h2 id="lab9-data-heading">1. Dataset &amp; encodings</h2>
+        <p>The provided dataset contains the 50 largest economies by 2025 nominal GDP, 
+          reported in billions of current U.S. dollars and sourced to the IMF's October 
+          2025 World Economic Outlook. WEO values can include estimates and may be revised. 
+          ISO-3 identifiers join GDP records to Natural Earth country boundaries.</p>
+        <p>Countries outside the supplied top 50 are gray (no data) in the choropleth, 
+          not zero GDP. The source's low-resolution boundaries omit separate polygons for 
+          Singapore and Hong Kong, so these are explicitly displayed as location markers, not 
+          invented country shapes.</p>
+      </div>
+      <div class="lab9-instruction-box" aria-label="How to interact">
+        <strong>Explore the maps</strong>
+        <p>Hover to highlight the same economy in both views. Click to pin it. Choose an economy from the menu, use the wheel or trackpad to zoom, drag to pan, or reset the view.</p>
+      </div>
+    </section>
 
-    <h1>Lab 9</h1>
-    <p>Lab 9 will be added here.</p>
-    <a href="../index.html">Back to home</a>
+    <section class="lab9-controls" aria-label="Coordinated map controls">
+      <label for="lab9-country-select">Find an economy</label>
+      <select id="lab9-country-select"><option value="">All 50 economies</option></select>
+      <button id="lab9-reset" type="button">Reset maps &amp; selection</button>
+      <p id="lab9-selection-status" class="lab9-selection-status" role="status" aria-live="polite">Hover over either map to highlight linked economies; click to keep one selected.</p>
+    </section>
 
+    <div id="lab9-error" class="lab9-error" role="alert" hidden></div>
 
+    <div class="lab9-visual-grid">
+      <section class="lab9-card" aria-labelledby="lab9-choropleth-title">
+        <div class="lab9-card-heading">
+          <span class="lab9-step">2 · Choropleth</span>
+          <h2 id="lab9-choropleth-title">GDP shown by color</h2>
+          <p>Countries keep their geographic shapes. Darker blue means higher nominal GDP 
+            among the top 50.</p>
+        </div>
+        <div class="lab9-map-frame">
+          <svg id="lab9-choropleth" class="lab9-map-svg" viewBox="0 0 960 520" role="img" aria-label="Interactive world choropleth map with 2025 GDP represented by logarithmic blue shading"></svg>
+        </div>
+        <div class="lab9-legend" aria-label="Choropleth color key">
+          <div class="lab9-legend-heading">2025 nominal GDP <span>logarithmic color scale</span></div>
+          <svg id="lab9-color-legend" viewBox="0 0 370 82" role="img" aria-label="Gradient legend showing GDP from approximately 0.3 to 30 trillion US dollars"></svg>
+          <div class="lab9-swatch-label"><span class="lab9-no-data-swatch"></span> Gray = outside supplied top 50</div>
+          <div class="lab9-swatch-label"><span class="lab9-point-symbol"></span> Colored dot = city-sized economy without a separate polygon</div>
+        </div>
+      </section>
+
+      <section class="lab9-card" aria-labelledby="lab9-cartogram-title">
+        <div class="lab9-card-heading">
+          <span class="lab9-step">3 · Dorling cartogram</span>
+          <h2 id="lab9-cartogram-title">GDP shown by area</h2>
+          <p>Every top-50 economy becomes a circle whose area is proportional to GDP. A collision 
+            layout keeps circles apart while roughly preserving geographic position.</p>
+        </div>
+        <div class="lab9-map-frame">
+          <svg id="lab9-cartogram" class="lab9-map-svg" viewBox="0 0 960 520" role="img" aria-label="Interactive Dorling cartogram with country circle area proportional to 2025 GDP"></svg>
+        </div>
+        <div class="lab9-legend" aria-label="Cartogram area key">
+          <div class="lab9-legend-heading">2025 nominal GDP <span>circle area ∝ GDP</span></div>
+          <svg id="lab9-size-legend" viewBox="0 0 370 132" role="img" aria-label="Area legend for circles representing 1, 5 and 20 trillion US dollars"></svg>
+          <div class="lab9-swatch-label">Only the 50 supplied economies appear. Empty regions do not mean zero GDP.</div>
+        </div>
+      </section>
+    </div>
+
+    <section class="lab9-comparison" aria-labelledby="lab9-comparison-heading">
+      <span class="lab9-step">4 · Design &amp; comparison</span>
+      <h2 id="lab9-comparison-heading">What changes when we encode GDP with area?</h2>
+      <p>The United States and China stand out in both views. On the choropleth, they appear 
+        among the darkest countries, but their prominence is still influenced by how much land 
+        they occupy. Russia, Canada, and Australia cover large geographic regions even though their 
+        GDP values are far smaller. Smaller high-GDP economies such as Germany, Japan, and the United Kingdom 
+        can be harder to spot because their geographic shapes occupy relatively little space.</p>
+      <p>The Dorling cartogram replaces real country shapes with circles. The United States and China 
+        become the largest circles, while countries with large land areas but smaller GDP shrink relative 
+        to them. Germany, Japan, and the United Kingdom become more noticeable relative to their physical 
+        size. Circle area is proportional to GDP—not radius—so an economy with twice the GDP gets twice 
+        the area. Repelling overlapping circles shifts some countries from their exact locations, 
+        particularly in crowded Europe and East Asia.</p>
+      <p>The choropleth is useful for locating countries, observing broad regional patterns, and 
+        seeing which economies have higher GDP while preserving coastlines and borders. The cartogram 
+        instead supports comparing overall economic magnitude without conflating it with land area, at 
+        the cost of recognizable shapes, exact positions, and some neighborhood relationships. Linked 
+        highlighting reconnects the two representations when individual circles are difficult to 
+        identify.</p>
+    </section>
+    <footer class="lab9-footer">
+      <p><strong>Sources:</strong> Provided <code>lab9_gdp_2025_top50.csv</code> (IMF World Economic Outlook, October 2025) and Natural Earth low-resolution country boundaries (public domain). The cartogram uses D3 force simulation with proportional circles.</p>
+    </footer>
+  </main>
+  <div id="lab9-tooltip" class="lab9 lab9-tooltip" role="tooltip" hidden></div>
 </body>
-
 </html>

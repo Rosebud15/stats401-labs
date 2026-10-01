@@ -1,0 +1,261 @@
+/* Lab 9 only. Nothing below changes ../css/style.css or any other lab. */
+body.lab9-page {
+  box-sizing: border-box;
+  max-width: 1470px;
+  margin: 22px auto;
+  padding: 0 24px 36px;
+  background: #f4f7fa;
+  color: #182938;
+}
+body.lab9-page *, body.lab9-page *::before, body.lab9-page *::after {box-sizing: border-box;}
+.lab9 {font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.55;}
+.lab9 .lab9-hero {
+  padding: 22px 24px 13px; 
+  background: #fff; 
+  border: 1px solid #dfe7ee; 
+  border-radius: 16px;
+}
+.lab9 .lab9-kicker {
+  margin: 0 0 8px; 
+  font-size: 12px; 
+  font-weight: 700; 
+  letter-spacing: .10em; 
+  text-transform: uppercase; 
+  color: #316a90;
+}
+.lab9 h1 {
+  font-size: clamp(26px, 3vw, 39px); 
+  line-height: 1.16; 
+  letter-spacing: -.028em; 
+  margin: 0 0 10px;
+}
+.lab9 .lab9-intro {
+  max-width: 950px; 
+  color: #41566b; 
+  font-size: 16px; 
+  margin: 0; 
+  line-height: 1.65;
+}
+.lab9 .lab-nav {
+  margin: 18px 0 0; 
+  padding: 16px 0 0; 
+  border-color: #e5ecf1;
+}
+.lab9 .lab-nav a[aria-current="page"] {color: #fff; background: #194f75;}
+.lab9 .lab9-context {
+  display: grid; 
+  grid-template-columns: minmax(0, 1.8fr) minmax(260px, .8fr); 
+  align-items: center; 
+  gap: 32px; 
+  margin: 15px 0; 
+  padding: 22px 25px; 
+  background: #fff; 
+  border: 1px solid #dfe7ee; 
+  border-radius: 16px;
+}
+.lab9 h2 {margin: 0 0 8px; font-size: clamp(19px, 2vw, 24px); line-height: 1.22;}
+.lab9 p {margin: 8px 0; line-height: 1.6;}
+.lab9 .lab9-context p {color: #495d6d;}
+.lab9 .lab9-instruction-box {
+  padding: 16px 18px; 
+  background: #eaf2f9; 
+  border-left: 4px solid #2777ad; 
+  border-radius: 8px; color: #27445b;
+}
+.lab9 .lab9-instruction-box p {font-size: 14px; margin: 6px 0 0; color: #365a76;}
+.lab9 .lab9-controls {
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  gap: 12px; 
+  margin: 16px 0; 
+  padding: 14px 18px; 
+  background: #fff; 
+  border: 1px solid #dfe7ee; 
+  border-radius: 12px;
+}
+.lab9 .lab9-controls label {font-size: 14px; font-weight: 700;}
+.lab9 .lab9-controls select {
+  min-width: 210px; 
+  max-width: 100%; 
+  padding: 9px 12px; 
+  border-radius: 7px; 
+  border: 1px solid #b3c5d4; 
+  background: #fff; 
+  color: #1b3448; 
+  font: inherit;
+}
+.lab9 .lab9-controls button {
+  border: 1px solid #9bbed3; 
+  border-radius: 7px; 
+  padding: 9px 12px; 
+  background: #edf5fa; 
+  color: #194e72; 
+  font: inherit; 
+  font-weight: 700; 
+  cursor: pointer;
+}
+.lab9 .lab9-controls button:hover {background: #d9ebf5;}
+.lab9 :is(button,select, a):focus-visible {outline: 3px solid #e59b35; outline-offset: 2px;}
+.lab9 .lab9-selection-status {
+  flex: 1 1 310px; 
+  margin: 0; 
+  color: #456074; 
+  font-size: 13px; 
+  text-align: right;
+}
+.lab9 .lab9-visual-grid {
+  display: grid; 
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  align-items: stretch; 
+  gap: 16px;
+}
+.lab9 .lab9-card {
+  min-width: 0; 
+  background: #fff; 
+  border: 1px solid #dfe7ee; 
+  border-radius: 16px; 
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column;
+}
+.lab9 .lab9-card-heading {padding: 20px 21px 11px; min-height: 139px;}
+.lab9 .lab9-card-heading p {font-size: 14px; color: #516579; margin: 5px 0 0;}
+.lab9 .lab9-step {
+  display: inline-block; 
+  font-size: 11px; 
+  letter-spacing: .085em; 
+  text-transform: uppercase; 
+  color: #377ca5; 
+  font-weight: 700; 
+  margin-bottom: 5px;
+}
+.lab9 .lab9-map-frame {padding: 0 8px; background: linear-gradient(#fff, #fbfdff); position: relative;}
+.lab9 .lab9-map-svg {display: block; width: 100%; height: auto; cursor: grab; touch-action: none; overflow: visible;}
+.lab9 .lab9-map-svg:active {cursor: grabbing;}
+.lab9 .lab9-country {
+  stroke: #fff; 
+  stroke-width: .65px; 
+  stroke-linejoin: round; 
+  cursor: pointer; 
+  vector-effect: non-scaling-stroke;
+}
+.lab9 .lab9-country.is-muted {opacity: .36;}
+.lab9 .lab9-country.is-active {stroke: #eb881f; stroke-width: 2.8px; opacity: 1;}
+.lab9 .lab9-marker {
+  cursor: pointer; 
+  stroke: #fff; 
+  stroke-width: 2.3px; 
+  fill: #2b7eaa; 
+  filter: drop-shadow(0 0 1px #1b3849); 
+  vector-effect: non-scaling-stroke;
+}
+.lab9 .lab9-marker.is-muted {opacity: .3;}
+.lab9 .lab9-marker.is-active {stroke: #eb881f; stroke-width: 3.5px;}
+.lab9 .lab9-marker-halo {pointer-events: none; fill: #fff; opacity: .9;}
+.lab9 .lab9-graticule {
+  stroke: #e6edf3; 
+  stroke-width: .8; 
+  fill: none; 
+  pointer-events: none; 
+  vector-effect: non-scaling-stroke;
+}
+.lab9 .lab9-cart-circle {
+  stroke: #fff; 
+  stroke-width: 1.35; 
+  fill: #2b7eaa; 
+  cursor: pointer; 
+  vector-effect: non-scaling-stroke;
+}
+.lab9 .lab9-cart-circle.is-muted {opacity: .3;}
+.lab9 .lab9-cart-circle.is-active {stroke: #e98d24; stroke-width: 3.5px; fill: #edab4f; opacity: 1;}
+.lab9 .lab9-cart-label {
+  font-size: 15px; 
+  fill: #fff; 
+  font-weight: 700; 
+  pointer-events: none; 
+  text-anchor: middle; 
+  dominant-baseline: central; 
+  paint-order: stroke;
+}
+.lab9 .lab9-legend {padding: 10px 21px 20px; margin-top: auto; border-top: 1px solid #e8edf2; min-height: 165px;}
+.lab9 .lab9-legend-heading {
+  font-size: 13px; 
+  font-weight: 700; 
+  color: #33495c; 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  justify-content: space-between;
+}
+.lab9 .lab9-legend-heading span {font-size: 12px; color: #5c7183; font-weight: 400;}
+.lab9 .lab9-legend svg {max-width: 100%; display: block; height: auto;}
+.lab9 .lab9-no-data-swatch {
+  width: 14px; 
+  height: 12px; 
+  display: inline-block; 
+  vertical-align: -1px; 
+  border: 1px solid #cbd4dc; 
+  background: #e4ebf0; 
+  margin-right: 4px;
+}
+.lab9 .lab9-point-symbol {
+  width: 11px; 
+  height: 11px; 
+  display: inline-block; 
+  vertical-align: -1px; 
+  border-radius: 50%; 
+  border: 2px solid #fff; 
+  outline: 1px solid #274c67; 
+  background: #2b7eaa; 
+  margin: 0 6px 0 2px;
+}
+.lab9 .lab9-swatch-label {font-size: 12px; color: #526a7a; margin-top: 5px;}
+.lab9 .lab9-comparison {
+  background: #fff; 
+  border: 1px solid #dfe7ee; 
+  border-radius: 16px; 
+  margin: 16px 0; 
+  padding: 26px 30px;
+}
+.lab9 .lab9-comparison p {font-size: 15px; color: #40576a; max-width: 1200px;}
+.lab9 .lab9-footer {font-size: 12px; color: #6b7d8b; padding: 4px 8px;}
+.lab9 .lab9-error {
+  color: #8e2e21; 
+  background: #fff0ee; 
+  border: 1px solid #e9bcb5; 
+  margin: 12px 0; 
+  padding: 12px 16px; 
+  border-radius: 8px;
+}
+.lab9.lab9-tooltip {
+  position: fixed; 
+  z-index: 100; 
+  max-width: 245px; 
+  padding: 10px 12px; 
+  background: #17334b; 
+  color: #fff; 
+  border-radius: 9px; 
+  font-size: 13px; 
+  line-height: 1.5; 
+  box-shadow: 0 10px 32px #061b293d; 
+  pointer-events: none;
+}
+.lab9.lab9-tooltip strong {font-size: 14px;}
+.lab9.lab9-tooltip .lab9-tip-note {display: block; font-size: 11px; color: #c4d9e6; margin-top: 3px;}
+.lab9 .lab9-country:focus-visible, .lab9 .lab9-marker:focus-visible, .lab9 .lab9-cart-circle:focus-visible {outline: none; stroke: #e68b1c; stroke-width: 4px;}
+
+@media (max-width: 920px) {
+  body.lab9-page {margin: 8px auto; padding: 0 10px 24px;}
+  .lab9 .lab9-context {grid-template-columns: 1fr; gap: 10px; padding: 19px;}
+  .lab9 .lab9-visual-grid {grid-template-columns: 1fr;}
+  .lab9 .lab9-card-heading {min-height: auto;}
+  .lab9 .lab9-selection-status {text-align: left;}
+}
+@media (max-width: 550px) {
+  .lab9 .lab9-hero {padding: 20px 16px;}
+  .lab9 .lab9-card-heading {padding: 16px;}
+  .lab9 .lab9-legend {padding: 12px 16px 16px;}
+  .lab9 .lab9-comparison {padding: 18px;}
+  .lab9 .lab9-controls select {flex: 1 1 220px;}
+}
