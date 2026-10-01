@@ -4,33 +4,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A linked D3 choropleth and proportional-circle cartogram of 2025 nominal GDP for the 50 largest economies.">
-  <title>Lab 9 | Geospatial Visualization</title>
+  <title>Lab 9: Geospatial Visualization</title>
 
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="./lab9.css">
+  <link rel="stylesheet" href="lab9.css">
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="./lab9.js" defer></script>
+  <script src="lab9.js" defer></script>
 </head>
-<body class="lab9-page">
+<body>
+  <header>
+    <h1>STATS 401: Data Acquisition and Visualization</h1>
+  </header>
+  <nav class="lab-nav">
+      <a href="../lab1/index.html">Lab 1</a>
+      <a href="../lab2/index.html">Lab 2</a>
+      <a href="../lab3/index.html">Lab 3</a>
+      <a href="../lab4/index.html">Lab 4</a>
+      <a href="../lab5/index.html">Lab 5</a>
+      <a href="../lab6/index.html">Lab 6</a>
+      <a href="../lab7/index.html">Lab 7</a>
+      <a href="../lab8/index.html">Lab 8</a>
+      <a href="../dnas_critique_redesign/index.html">Visualization Critique and Redesign</a>
+      <a href="../lab9/index.html">Lab 9</a>
+      <a href="../lab10/index.html">Lab 10</a>
+  </nav>
   <main id="lab9-app" class="lab9">
-    <header class="lab9-hero">
-      <p class="lab9-kicker">STATS 401 · Lab 9 · Geospatial Visualization</p>
-      <h1>Global GDP, two ways</h1>
+    <header class="lab9-header">
+      <h2>Lab 9: Geospatial Visualization</h2>
+      <h3>Global GDP, two ways</h3>
       <p class="lab9-intro">How does the picture change when GDP controls a country's color instead of its visual area? Compare an undistorted geographic map with a proportional-area Dorling cartogram using the same 2025 nominal GDP data.</p>
-      <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../dnas_critique_redesign/index.html">Visualization Critique and Redesign</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-      </nav>
     </header>
 
     <section aria-labelledby="lab9-data-heading" class="lab9-context">

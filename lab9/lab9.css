@@ -1,13 +1,13 @@
-/* Lab 9 only. Nothing below changes ../css/style.css or any other lab. */
-body.lab9-page {
+#lab9-app {
+  width: 100%;
   box-sizing: border-box;
-  max-width: 1470px;
-  margin: 22px auto;
-  padding: 0 24px 36px;
+  padding: 22px 24px 36px;
   background: #f4f7fa;
   color: #182938;
 }
-body.lab9-page *, body.lab9-page *::before, body.lab9-page *::after {box-sizing: border-box;}
+#lab9-app, #lab9-app *, #lab9-app *::before, #lab9-app *::after {
+  box-sizing: border-box;
+}
 .lab9 {font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.55;}
 .lab9 .lab9-hero {
   padding: 22px 24px 13px; 
@@ -36,12 +36,6 @@ body.lab9-page *, body.lab9-page *::before, body.lab9-page *::after {box-sizing:
   margin: 0; 
   line-height: 1.65;
 }
-.lab9 .lab-nav {
-  margin: 18px 0 0; 
-  padding: 16px 0 0; 
-  border-color: #e5ecf1;
-}
-.lab9 .lab-nav a[aria-current="page"] {color: #fff; background: #194f75;}
 .lab9 .lab9-context {
   display: grid; 
   grid-template-columns: minmax(0, 1.8fr) minmax(260px, .8fr); 
@@ -246,8 +240,12 @@ body.lab9-page *, body.lab9-page *::before, body.lab9-page *::after {box-sizing:
 .lab9 .lab9-country:focus-visible, .lab9 .lab9-marker:focus-visible, .lab9 .lab9-cart-circle:focus-visible {outline: none; stroke: #e68b1c; stroke-width: 4px;}
 
 @media (max-width: 920px) {
-  body.lab9-page {margin: 8px auto; padding: 0 10px 24px;}
-  .lab9 .lab9-context {grid-template-columns: 1fr; gap: 10px; padding: 19px;}
+  #lab9-app {padding: 8px 10px 24px;}
+  .lab9 .lab9-context {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 19px;
+  }
   .lab9 .lab9-visual-grid {grid-template-columns: 1fr;}
   .lab9 .lab9-card-heading {min-height: auto;}
   .lab9 .lab9-selection-status {text-align: left;}
